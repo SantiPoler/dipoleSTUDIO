@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(dir:*)",
+      "Bash(claude config list:*)",
+      "Bash(findstr:*)",
+      "Bash(where:*)",
+      "Bash(\"/c/Program Files/nodejs/node.exe\" --version)",
+      "Bash(where.exe node:*)",
+      "Bash(cmd.exe /c \"where node\")",
+      "Bash(echo:*)",
+      "Bash(ls:*)",
+      "mcp__serena__list_dir"
+    ]
+  }
+}
