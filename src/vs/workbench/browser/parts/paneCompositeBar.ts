@@ -31,6 +31,7 @@ import { GestureEvent } from '../../../base/browser/touch.js';
 import { IPaneCompositePart } from './paneCompositePart.js';
 import { IConfigurationService } from '../../../platform/configuration/common/configuration.js';
 import { IViewsService } from '../../services/views/common/viewsService.js';
+import { ICommandService } from '../../../platform/commands/common/commands.js';
 
 interface IPlaceholderViewContainer {
 	readonly id: string;
@@ -780,6 +781,7 @@ class ViewContainerActivityAction extends CompositeBarAction {
 		@IWorkbenchLayoutService private readonly layoutService: IWorkbenchLayoutService,
 		@IConfigurationService private readonly configurationService: IConfigurationService,
 		@IActivityService private readonly activityService: IActivityService,
+		@ICommandService private readonly commandService: ICommandService,
 	) {
 		super(compositeBarActionItem);
 		this.updateActivity();
@@ -809,6 +811,16 @@ class ViewContainerActivityAction extends CompositeBarAction {
 			return;
 		}
 		this.lastRun = now;
+
+		// dipoleCODE: intercept click on dipoleCODE activity bar icon
+		// Execute the terminal command directly instead of opening a panel
+		const viewContainerId = this.compositeBarActionItem.id;
+		if (viewContainerId === 'dipolecode-activitybar' ||
+			viewContainerId === 'workbench.view.extension.dipolecode-activitybar') {
+			console.log('[dipoleCODE] Intercepted activity bar click, opening terminal directly');
+			await this.commandService.executeCommand('dipolecode.openTerminal');
+			return;
+		}
 
 		const focus = (event && 'preserveFocus' in event) ? !event.preserveFocus : true;
 

@@ -272,6 +272,9 @@ import './contrib/multiDiffEditor/browser/multiDiffEditor.contribution.js';
 // Commands
 import './contrib/commands/common/commands.contribution.js';
 
+// dipoleCODE
+import './contrib/dipolecode/browser/dipolecode.contribution.js';
+
 // Comments
 import './contrib/comments/browser/comments.contribution.js';
 
@@ -343,6 +346,9 @@ import './contrib/themes/browser/themes.contribution.js';
 
 // Update
 import './contrib/update/browser/update.contribution.js';
+
+// dipoleSTUDIO Release Notes
+import './contrib/dipoleReleaseNotes/browser/dipoleReleaseNotes.contribution.js';
 
 // Surveys
 import './contrib/surveys/browser/nps.contribution.js';

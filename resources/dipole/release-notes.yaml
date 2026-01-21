@@ -1,0 +1,24 @@
+# dipoleSTUDIO Release Notes
+# This file contains structured release notes data in YAML format.
+# The content is transformed to HTML and displayed in a webview.
+
+releases:
+  - version: "1.0.0"
+    date: "2026-01-20"
+    description: "Primera release de dipoleSTUDIO - Un fork personalizado de VS Code con identidad propia."
+    notes:
+      - title: "Fork inicial de VS Code"
+        description: "Base del proyecto dipoleSTUDIO creada a partir de VS Code con configuración personalizada para desarrollo."
+        type: "Feature"
+
+      - title: "Branding dipoleSTUDIO"
+        description: "Iconos y colores personalizados siguiendo las guías de dipoleDIGITAL para establecer la identidad visual del producto."
+        type: "Feature"
+
+      - title: "Sistema de Release Notes"
+        description: "Webview integrado para mostrar notas de versión con soporte para categorías, badges y diseño responsive."
+        type: "Feature"
+
+      - title: "Configuración de desarrollo"
+        description: "Configuración inicial de .claude/settings.local.json y estructura del proyecto para desarrollo colaborativo."
+        type: "Improvement"

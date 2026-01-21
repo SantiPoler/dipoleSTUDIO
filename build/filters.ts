@@ -44,6 +44,7 @@ export const unicodeFilter = Object.freeze<string[]>([
 	'!**/*.test.ts',
 	'!**/*.{d.ts,json,md}',
 	'!**/*.mp3',
+	'!extensions/dipolecode/**',
 
 	'!build/win32/**',
 	'!extensions/markdown-language-features/notebook-out/*.js',
@@ -100,6 +101,7 @@ export const indentationFilter = Object.freeze<string[]>([
 	'!extensions/typescript-language-features/test-workspace/**',
 	'!extensions/typescript-language-features/resources/walkthroughs/**',
 	'!extensions/typescript-language-features/package-manager/node-maintainer/**',
+	'!extensions/dipolecode/**',
 	'!extensions/markdown-math/notebook-out/**',
 	'!extensions/ipynb/notebook-out/**',
 	'!extensions/vscode-api-tests/testWorkspace/**',
@@ -188,6 +190,7 @@ export const copyrightFilter = Object.freeze<string[]>([
 	'!extensions/typescript-language-features/node-maintainer/**',
 	'!extensions/html-language-features/server/src/modes/typescript/*',
 	'!extensions/*/server/bin/*',
+	'!extensions/dipolecode/**',
 	'!src/vs/workbench/contrib/terminal/common/scripts/psreadline/**',
 ]);
 
@@ -207,6 +210,7 @@ export const tsFormattingFilter = Object.freeze<string[]>([
 	'!extensions/**/*.test.ts',
 	'!extensions/html-language-features/server/lib/jquery.d.ts',
 	'!extensions/terminal-suggest/src/shell/zshBuiltinsCache.ts',
+	'!extensions/dipolecode/**',
 	'!extensions/terminal-suggest/src/shell/fishBuiltinsCache.ts',
 ]);
 
