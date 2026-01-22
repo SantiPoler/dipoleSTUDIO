@@ -2,10 +2,46 @@
 export function deactivate() {}
 
 import * as vscode from "vscode"
+import * as path from "path"
+import * as fs from "fs"
+import * as os from "os"
 import { initializeAFWK } from "./afwk"
 import { initializeModalProvider } from "./ui/modal"
 
 const TERMINAL_NAME = "dipoleCODE"
+
+/**
+ * Get the path to the bundled dipoleCODE binary.
+ * Throws an error if the binary is not found - no fallback to PATH.
+ */
+function getBinaryPath(extensionPath: string): string {
+  const platform = os.platform()
+  const arch = os.arch()
+
+  // Map Node.js platform/arch to binary names
+  let binaryName: string
+  if (platform === "win32") {
+    binaryName = `opencode-win32-${arch === "arm64" ? "arm64" : "x64"}.exe`
+  } else if (platform === "darwin") {
+    binaryName = `opencode-darwin-${arch === "arm64" ? "arm64" : "x64"}`
+  } else {
+    // Linux
+    binaryName = `opencode-linux-${arch === "arm64" ? "arm64" : "x64"}`
+  }
+
+  const bundledPath = path.join(extensionPath, "bin", binaryName)
+
+  // Check if bundled binary exists
+  if (fs.existsSync(bundledPath)) {
+    console.log(`[dipoleCODE] Using bundled binary: ${bundledPath}`)
+    return bundledPath
+  }
+
+  // No fallback - fail explicitly if binary not found
+  const errorMsg = `[dipoleCODE] ERROR: Bundled binary not found at ${bundledPath}. Platform: ${platform}, Arch: ${arch}`
+  console.error(errorMsg)
+  throw new Error(errorMsg)
+}
 
 export async function activate(context: vscode.ExtensionContext) {
   // Initialize the custom modal system
@@ -161,7 +197,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
     const terminal = vscode.window.createTerminal({
       name: TERMINAL_NAME,
-      shellPath: "opencode",
+      shellPath: getBinaryPath(context.extensionPath),
       shellArgs,
       cwd: workspaceFolder,
       iconPath: new vscode.ThemeIcon("terminal"),
